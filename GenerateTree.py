@@ -100,6 +100,6 @@ print_tree(root, None)
 
 from pathlib import Path
 
-html_str = Path("tree-view-visual-connections/demo/demo.html").read_text()
+html_str = Path("graph.html").read_text()
 log_file.write(html_str.replace("@@@tree_view@@@", op_str))
 log_file.close()
