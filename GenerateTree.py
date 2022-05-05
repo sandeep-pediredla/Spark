@@ -6,6 +6,7 @@ log_file = open(op_filePath, 'a')
 op_str = ""
 filepath = sys.argv[1]
 
+
 class Node:
     def __init__(self, indented_line):
         self.children = []
@@ -97,10 +98,8 @@ root = Node(first_ln)
 root.add_children([Node(line) for line in indented_text.splitlines()[1:] if line.strip()])
 print_tree(root, None)
 
-text_file = open("tree-view-visual-connections/demo/demo.html", "r")
 from pathlib import Path
 
 html_str = Path("tree-view-visual-connections/demo/demo.html").read_text()
-text_file.close()
 log_file.write(html_str.replace("@@@tree_view@@@", op_str))
 log_file.close()
