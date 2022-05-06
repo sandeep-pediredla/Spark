@@ -1,11 +1,7 @@
 import sys
 
 div = '<div id="node_@@cnt@@" class="window hidden" data-id="@@cnt@@" data-parent="data_parent" data-first-child="first_child" data-next-sibling="next_sibling"> <div class="tooltip">@@operation@@  <span class="tooltiptext">replace_hidden</span></div>  </div>'
-op_filePath = sys.argv[2]
-log_file = open(op_filePath, 'a')
 op_str = ""
-filepath = sys.argv[1]
-
 
 class Node:
     def __init__(self, indented_line):
@@ -84,8 +80,9 @@ def print_tree(node, root):
         else:
             print_tree(node.children[i], node)
 
-
-content_str = ""
+filepath = sys.argv[1]
+op_filePath = sys.argv[2]
+log_file = open(op_filePath, 'a')
 
 with open(filepath) as fp:
     indented_text = fp.read()
@@ -100,6 +97,6 @@ print_tree(root, None)
 
 from pathlib import Path
 
-html_str = Path("graph.html").read_text()
-log_file.write(html_str.replace("@@@tree_view@@@", op_str))
+html_str = Path("analyze_spark_logical_plan.template").read_text()
+log_file.write(html_str.replace("analyzed_logical_data", op_str))
 log_file.close()
